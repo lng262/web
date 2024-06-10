@@ -1,0 +1,76 @@
+about__biography{
+    margin: 100px calc((100% - 1000px)/2);
+    width: auto;
+}
+.about__biography__title{
+    font-size: 24px;
+    text-align: center;
+    width: auto;
+}
+.image-row {
+    display: flex;
+    justify-content: space-around; 
+}
+.image-row img {
+    width: 200px; 
+    height: 200px; 
+    object-fit: cover; 
+}
+.level:hover .overlay {
+    opacity: 1;
+}
+h2{
+    margin-top: 40px;
+}
+document.addEventListener("DOMContentLoaded", function() {
+    const days = document.getElementById("day");
+    const months = document.getElementById("month");
+    const years = document.getElementById("year");
+
+    for (let i = 1; i <= 31; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.text = i;
+        days.appendChild(option);
+    }
+
+    for (let i = 1; i <= 12; i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.text = i;
+        months.appendChild(option);
+    }
+
+    for (let i = 1900; i <= new Date().getFullYear(); i++) {
+        const option = document.createElement("option");
+        option.value = i;
+        option.text = i;
+        years.appendChild(option);
+    }
+
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        const lastName = document.getElementById("lastName").value;
+        const firstName = document.getElementById("firstName").value;
+        const phone = document.getElementById("phone").value;
+
+        if (!lastName || !firstName || !phone || phone.length !== 10 || isNaN(phone)) {
+            alert("Kiểm tra người dùng chưa nhập vào họ, tên, số điện thoại (phải là 1 số và độ dài là 10)");
+            event.preventDefault();
+        }
+        else{
+            alert('Tin nhắn của bạn đã được gửi!');
+        }
+    });
+});
+body{
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+form{
+    width: 900px;
+    height: 120%;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding-left: 400px;
+}
